@@ -3,7 +3,7 @@
 \alias{sbgcop}
 \docType{package}
 \title{
-Semiparametric Bayesian Gaussian copula estimation
+Semiparametric Bayesian Gaussian copula estimation and imputation
 }
 \description{
  This package estimates parameters of a Gaussian
@@ -16,8 +16,8 @@ Semiparametric Bayesian Gaussian copula estimation
 \tabular{ll}{
 Package: \tab sbgcop\cr
 Type: \tab Package\cr
-Version: \tab 0.95 \cr
-Date: \tab 2007-03-09\cr
+Version: \tab 0.975 \cr
+Date: \tab 2010-03-08\cr
 License: \tab GPL Version 2 or later \cr
 }
 This function produces MCMC samples from the posterior

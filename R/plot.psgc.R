@@ -4,7 +4,8 @@ function(x,...){
 Y<-x$Y.pmean
 p<-dim(Y)[2]
 vnames<-colnames(Y)
-nc<-max( nchar(vnames))
+nc<-1
+if(!is.null(vnames)) {nc<-max( nchar(vnames)) }
 
 
 par(mar=c(.6,2,.5,1),mgp=c(.6,.5,0),oma=c(.75*nc,2.85,1,1),xpd=FALSE,cex=.8)
