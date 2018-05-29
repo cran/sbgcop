@@ -1,3 +1,45 @@
+#' Semiparametric Bayesian Gaussian copula estimation and imputation
+#' 
+#' \code{sbgcop.mcmc} is used to semiparametrically estimate the parameters of
+#' a Gaussian copula. It can be used for posterior inference on the copula
+#' parameters, and for imputation of missing values in a matrix of ordinal
+#' and/or continuous values.
+#' 
+#' This function produces MCMC samples from the posterior distribution of a
+#' correlation matrix, using a scaled inverse-Wishart prior distribution and an
+#' extended rank likelihood. It also provides imputation for missing values in
+#' a multivariate dataset.
+#' 
+#' @aliases sbgcop.mcmc plot.psgc summary.psgc print.sum.psgc
+#' @param Y an n x p matrix. Missing values are allowed.
+#' @param S0 a p x p positive definite matrix
+#' @param n0 a positive integer
+#' @param nsamp number of iterations of the Markov chain.
+#' @param odens output density: number of iterations between saved samples.
+#' @param impute save posterior predictive values of missing data(TRUE/FALSE)?
+#' @param plugin.threshold if the number of unique values of a variable exceeds
+#' this integer, then plug-in the empirical distribution as the marginal.
+#' @param plugin.marginal a logical of length p. Gives finer control over which
+#' margins to use the empirical distribution for.
+#' @param seed an integer for the random seed
+#' @param verb print progress of MCMC(TRUE/FALSE)?
+#' @return An object of class \code{psgc} containing the following components:
+#' \item{C.psamp }{an array of size p x p x \code{nsamp/odens}, consisting of
+#' posterior samples of the correlation matrix.  } \item{Y.pmean }{the original
+#' datamatrix with imputed values replacing missing data } \item{Y.impute }{ an
+#' array of size n x p x \code{nsamp/odens}, consisting of copies of the
+#' original data matrix, with posterior samples of missing values included. }
+#' \item{LPC }{the log-probability of the latent variables at each saved
+#' sample. Used for diagnostic purposes.  }
+#' @author Peter Hoff
+#' @references http://www.stat.washington.edu/hoff/
+#' @keywords multivariate models
+#' @examples
+#' 
+#' fit<-sbgcop.mcmc(swiss)
+#' summary(fit)
+#' plot(fit)
+#' 
 "sbgcop.mcmc" <-
 function(Y,S0=diag(dim(Y)[2]),n0=dim(Y)[2]+2, 
  nsamp=100,odens=max(1,round(nsamp/1000)),impute=any(is.na(Y)),

@@ -1,3 +1,19 @@
+#' Matrix Quantiles
+#' 
+#' Computes quantiles along the third dimension of a 3-d array.
+#' 
+#' 
+#' @param sM an m x n x s array
+#' @param quantiles quantiles to be computed
+#' @return an array of dimension m x n x l, where l is the length of
+#' \code{quantiles}
+#' @author Peter Hoff
+#' @keywords array multivariate
+#'
+#' fit<-sbgcop.mcmc(swiss)
+#' qC<-qM.sM(fit$C.psamp)
+#' qR<-qM.sM(sR.sC(fit$C.psamp))
+#'
 "qM.sM" <-
 function(sM,quantiles=c(0.025,.5,.975)) {
 

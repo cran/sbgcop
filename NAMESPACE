@@ -1,5 +1,11 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
-
 # Export all names
-exportPattern(".")
+exportPattern(".") 
+
+import(stats)
+import(graphics)
+
+# Methods
+S3method(summary, psgc) 
+S3method(plot, psgc)
+S3method(print, sum.psgc)
+
